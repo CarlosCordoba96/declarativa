@@ -1,7 +1,12 @@
+-- Quicksort
+qsort [] = []
+qsort (p:xs) = qsort lesser ++ [p] ++ qsort greater
+    where lesser  = filter (< p) xs
+          greater = filter (>= p) xs
 -- EJERCICIO 30 --
 
 {- El predicado digit que aplicado
-a un carácter nos dice si este es 
+a un carácter nos dice si este es
 un dígito -}
 
 isDigitMine :: Char -> Bool
@@ -26,7 +31,7 @@ letter c = c >= 'A' && c <= 'z'
 {- La función charofdigit que aplicada a un entero entre 0 .. 9 lo
 convierte en carácter -}
 
-{- toEnum convierte un entero en su caracter ascii, mientras que 
+{- toEnum convierte un entero en su caracter ascii, mientras que
 fromEnum convierte un carácter en su entoro ascii -}
 {- error lo que hace es mostrar "*** Exception:" seguido de la cadena
 que le pasemos -}
@@ -38,8 +43,8 @@ charofdigit i
 
 -- EJERCICIO 31 --
 
-{- La función among es un predicado. 'x' es un objeto de 
-tipo a, 'ys' es una lista formada por objetos de tipo a. 
+{- La función among es un predicado. 'x' es un objeto de
+tipo a, 'ys' es una lista formada por objetos de tipo a.
 among devuelve true -}
 
 among :: (Eq a) => (a, [a]) -> Bool
