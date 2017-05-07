@@ -13,3 +13,10 @@ add2(X, L, [X | L]).
 cubo :- write('Siguiente numero: '), read(X),
 	(X \= 'stop' -> Z is X ** 3, write('El cubo de '), write(X), write(' es '), write(Z), nl, cubo;
 	write('yes')).
+	suma2(X,Y):- Y is X+2.
+neg(A,B):- B is -A.
+%% map(Fun, L1, L2).
+
+map(_, [], []).
+map(Fun, [X|L1], [Y|L2]) :- apply(Fun, X, Y), map(Fun, L1, L2).
+apply(Fun, X, Y) :- T=..[Fun|[X,Y]], T.
