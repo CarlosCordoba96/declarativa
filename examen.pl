@@ -39,6 +39,25 @@ suma([X|Xs],S):-suma(Xs,S1), S is S1+X.
 media(X,S):-long(X,L),suma(X,SU), S is SU / L.
 
 %Factorial de un numero
+factorial(0, 1).
+factorial(1, 1).
+factorial(N, F) :- N > 1, Z is N - 1, factorial(Z, S), F is S * N.
 
-factorial(0,F,F).
-factorial(N,A,F):- N>0,A1 is N*A, N1 is N - 1,factorial(N1,A1,F).
+fac2(N,A):-fac2(N,1,A).
+fac2(1,F,F):- !.
+
+fac2(N,S,F):- N2 is N - 1,T2 is S * N,
+          fac2(N2, T2, F).
+
+
+%BET numeros entre 2 numeros
+bet(N,M,K):-N=<M,K=N.
+bet(N,M,K):-N < M,N1 is N+1,bet(N1,M,K).
+
+%Maxlist nos da el elemento más grande de la lista
+
+
+maxlist(X,A):-maxlist(X,0,A).
+maxlist([],A,A).
+maxlist([X|A],As,L):-X>As,Z is X,maxlist(A,Z,L).
+maxlist([X|A],As,L):-X<As,maxlist(A,As,L).
