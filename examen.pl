@@ -61,3 +61,34 @@ maxlist(X,A):-maxlist(X,0,A).
 maxlist([],A,A).
 maxlist([X|A],As,L):-X>As,Z is X,maxlist(A,Z,L).
 maxlist([X|A],As,L):-X<As,maxlist(A,As,L).
+
+fibo(0,0).
+fibo(1,1).
+fibo(N,F):- N1 is N -1,N2 is N-2, fibo(N1,F1),fibo(N2,F2), F is F1 + F2.
+
+fibon(0,0).
+fibon(1,1).
+fibon(N,F):-fibon(N,F,2,1,1).
+fibon(N,F,I,FN1,_):-I>= N,F=FN1.
+fibon(N,F,I,FN1,FN2):-I<N, NF is FN1+FN2,
+                      NFN2=FN1,
+                      NFN1=NF,
+                      NI is I+1,
+                      fibon(N,F,NI,NFN1,NFN2).
+
+my_fibonacci(_, _, 0).
+
+my_fibonacci(A, B, N):-
+          write(A),
+          write(' '),
+          N1 is N-1,
+          C is A+B,
+          my_fibonacci(B, C, N1).
+
+factor(0,1).
+factor(1,1).
+factor(N,F):-Z is N-1, factor(Z,F1), F is F1* N.
+
+mfactor(N,F):-mfactor(N,1,F).
+mfactor(1,F,F).
+mfactor(N,A,F):- N > 1,N1 is N-1,S is A*N,mfactor(N1,S,F).
