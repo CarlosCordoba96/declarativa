@@ -10,6 +10,11 @@ subconjunto([X|Xs],K):-miembro(X,K),subconjunto(Xs,K).
 disjunto([],_).
 disjunto([X|Xs],K):-not(miembro(X,K)),disjunto(Xs,K).
 
+%Union de conjuntos
+union([],A,A).
+union(A,[],A).
+union([X|Xs],B,U):- member(X,B),union(Xs,B,U).
+union([X|Xs],B,[X|U]):- not(member(X,B)),union(Xs,B,U).
 %% Interseccion(A,B,R) cierto si R es la interseccion de A y B
 interseccion([],_,[]).
 interseccion([A|B],D,[A|R]):-member(A,D),interseccion(B,D,R).
